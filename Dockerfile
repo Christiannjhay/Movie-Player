@@ -1,8 +1,11 @@
 # Use the official PHP image from the Docker Hub
 FROM php:8.0-apache
 
-# Copy the current directory contents into /var/www/html in the container
+# Copy the PHP files to the Apache document root
 COPY . /var/www/html/
+
+# Set permissions for the copied files
+RUN chown -R www-data:www-data /var/www/html
 
 # Set the working directory
 WORKDIR /var/www/html
